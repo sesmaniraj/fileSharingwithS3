@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
+import { getSignInUrl } from "../services/api";
 
 const HomePage = () => {
   const inputUserRef = useRef();
@@ -6,6 +7,13 @@ const HomePage = () => {
   const handleUploadClick = () => {
     inputUserRef.current.click();
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getSignInUrl();
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="container mx-auto p-8">
