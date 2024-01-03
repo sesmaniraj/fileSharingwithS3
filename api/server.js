@@ -1,7 +1,15 @@
 import express from "express";
+import imageRoutes from "./routes/route.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
-app.listen(8000, () => {
-  console.log("server started");
+//routes
+app.use("/api", imageRoutes);
+
+//server port
+const port = process.env.PORT;
+app.listen(port, () => {
+  console.log(`server started at ${port}`);
 });
